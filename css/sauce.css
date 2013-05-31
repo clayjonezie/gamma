@@ -1,0 +1,8 @@
+textarea {
+   outline: none;
+   resize: none;
+   overflow:auto;
+   width:40%;
+   margin:auto;
+   height:400px;
+}
