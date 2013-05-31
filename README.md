@@ -3,6 +3,8 @@ gamma
 
 An interpreted notepad style calculator for various calculations in non-formal text. Also variables. In the browser. Inspired by http://www.acqualia.com/soulver/
 
+Think of math with some English sprinkled in.
+
 Goal: something like this example for a quick budget. 
 
 ```
