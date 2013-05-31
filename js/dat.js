@@ -1,7 +1,7 @@
 $(function() {
    $("#input").keyup(function(event) {
       if (event.keyCode == 13) {
-         evalInput()
+         evalInput();
       }
    });
 });
@@ -21,19 +21,21 @@ function evalLine(line) {
 
 var lex = function (input) {
    var tokens = [], c, i = 0;
-   var advance = function() { return c = input[i + 1] };
+   var advance = function() { return c = input[++i]; };
    var addToken = function (type, value) {
+      console.log("added : " + value);
       tokens.push({
          type: type,
          value: value
       });
    };
    while (i < input.length) {
+      console.log("observing : " + i);
       c = input[i];
-      if (isWhiteSpace(c)) { advance(); };
+      console.log(c);
+      if (isWhiteSpace(c)) { /*ignore*/ }
       else if (isOperator(c)) {
          addToken('operator', c);
-         advance();
       }
       else if (isDigit(c)) {
          var num = c;
@@ -52,6 +54,7 @@ var lex = function (input) {
          addToken('identifier', idn);
       }
       else throw 'unrecognized token.';
+      advance();
    }
 
    return tokens;
@@ -60,6 +63,10 @@ var lex = function (input) {
 var isOperator = function (c) {
    return /[+\-*\/\^%=(),]/.test(c);
 };
+
+var isDigit = function (c) {
+   return /[0-9]/.test(c);
+}
 
 var isWhiteSpace = function (c) {
    return /\s/.test(c);
